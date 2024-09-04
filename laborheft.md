@@ -55,6 +55,9 @@ In diesem Labor wirst du lernen, wie du einen einfachen REST-Webserver in Python
 
         def do_GET(self):
             self._set_response()
+            url = self.path
+            if url == "/exampleURL":
+                exampleClass.exampleFunction()
             response = {'message': 'GET request received'}
             self.wfile.write(json.dumps(response).encode('utf-8'))
 
@@ -95,6 +98,7 @@ Die `RESTRequestHandler`-Klasse erbt von `BaseHTTPRequestHandler` und überschre
 - **Beschreibung:** Verarbeitet `GET`-Anfragen.
 - **Details:**
   - Ruft `_set_response()` auf, um die Antwort-Header zu setzen.
+  - Prüft welche funktion aufgerufen werden soll.
   - Erzeugt eine JSON-Antwort mit der Nachricht `'GET request received'`.
   - Sendet die JSON-Antwort an den Client.
 
