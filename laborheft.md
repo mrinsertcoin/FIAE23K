@@ -82,7 +82,7 @@ In diesem Labor wirst du lernen, wie du einen einfachen REST-Webserver in Python
     ```bash
     python rest_server.py
     ```
-[Funktionen und deren Beschreibung] (#Funktionen)
+[Funktionen und deren Beschreibung](#funktionen)
 ## Funktionen
 
 ### `RESTRequestHandler`
