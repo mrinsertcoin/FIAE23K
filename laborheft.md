@@ -83,47 +83,6 @@ In diesem Labor wirst du lernen, wie du einen einfachen REST-Webserver in Python
     python rest_server.py
     ```
 [Funktionen und deren Beschreibung](#funktionen)
-## Funktionen
-
-### `RESTRequestHandler`
-Die `RESTRequestHandler`-Klasse erbt von `BaseHTTPRequestHandler` und überschreibt Methoden, um `GET`- und `POST`-Anfragen zu verarbeiten.
-
-#### `_set_response(self)`
-- **Beschreibung:** Setzt die HTTP-Antwort-Header und den Statuscode auf `200 OK`.
-- **Details:**
-  - `self.send_response(200)`: Sendet einen Statuscode `200 OK`.
-  - `self.send_header('Content-type', 'application/json')`: Setzt den `Content-Type` der Antwort auf `application/json`.
-  - `self.end_headers()`: Beendet die Header-Sektion der Antwort.
-
-#### `do_GET(self)`
-- **Beschreibung:** Verarbeitet `GET`-Anfragen.
-- **Details:**
-  - Ruft `_set_response()` auf, um die Antwort-Header zu setzen.
-  - Prüft welche funktion aufgerufen werden soll.
-  - Erzeugt eine JSON-Antwort mit der Nachricht `'GET request received'`.
-  - Sendet die JSON-Antwort an den Client.
-
-#### `do_POST(self)`
-- **Beschreibung:** Verarbeitet `POST`-Anfragen.
-- **Details:**
-  - Liest die Länge der Daten aus den HTTP-Headern (`Content-Length`).
-  - Liest die tatsächlichen `POST`-Daten vom Client.
-  - Erzeugt eine JSON-Antwort, die die Nachricht `'POST request received'` sowie die empfangenen Daten enthält.
-  - Ruft `_set_response()` auf, um die Antwort-Header zu setzen.
-  - Sendet die JSON-Antwort an den Client.
-
-### `run(server_class=HTTPServer, handler_class=RESTRequestHandler, port=8000)`
-- **Beschreibung:** Startet den HTTP-Server.
-- **Details:**
-  - `server_address = ('', port)`: Setzt die Serveradresse auf den angegebenen Port (Standard: 8000) und akzeptiert Verbindungen von allen IP-Adressen.
-  - `httpd = server_class(server_address, handler_class)`: Erstellt eine Instanz des HTTP-Servers mit der angegebenen Adresse und Handler-Klasse.
-  - `print(f'Starting httpd on port {port}...')`: Gibt eine Nachricht aus, dass der Server gestartet wird.
-  - `httpd.serve_forever()`: Startet den Server und lässt ihn ununterbrochen laufen.
-
-### `if __name__ == '__main__':`
-- **Beschreibung:** Stellt sicher, dass `run()` nur ausgeführt wird, wenn das Skript direkt ausgeführt wird (nicht importiert).
-- **Details:**
-  - Ruft die `run()`-Funktion auf, um den Server zu starten.
 
 ## Zusammenfassung
 Dieser Code setzt einen einfachen HTTP-Server auf, der Anfragen vom Typ `GET` und `POST` verarbeitet. Der Server gibt JSON-Antworten zurück und kann auf Port 8000 betrieben werden. Du kannst diesen Server anpassen, indem du die Methoden in `RESTRequestHandler` änderst oder erweiterst, um zusätzliche Funktionalitäten hinzuzufügen.
@@ -183,6 +142,48 @@ Dieser Code setzt einen einfachen HTTP-Server auf, der Anfragen vom Typ `GET` un
 
 3. **Deployment des Servers**:
     - Recherchiere, wie du den Server auf einem Remote-Server oder in der Cloud bereitstellen kannst (z.B. mit `gunicorn` oder `nginx`).
+    - 
+## Funktionen
+
+### `RESTRequestHandler`
+Die `RESTRequestHandler`-Klasse erbt von `BaseHTTPRequestHandler` und überschreibt Methoden, um `GET`- und `POST`-Anfragen zu verarbeiten.
+
+#### `_set_response(self)`
+- **Beschreibung:** Setzt die HTTP-Antwort-Header und den Statuscode auf `200 OK`.
+- **Details:**
+  - `self.send_response(200)`: Sendet einen Statuscode `200 OK`.
+  - `self.send_header('Content-type', 'application/json')`: Setzt den `Content-Type` der Antwort auf `application/json`.
+  - `self.end_headers()`: Beendet die Header-Sektion der Antwort.
+
+#### `do_GET(self)`
+- **Beschreibung:** Verarbeitet `GET`-Anfragen.
+- **Details:**
+  - Ruft `_set_response()` auf, um die Antwort-Header zu setzen.
+  - Prüft welche funktion aufgerufen werden soll.
+  - Erzeugt eine JSON-Antwort mit der Nachricht `'GET request received'`.
+  - Sendet die JSON-Antwort an den Client.
+
+#### `do_POST(self)`
+- **Beschreibung:** Verarbeitet `POST`-Anfragen.
+- **Details:**
+  - Liest die Länge der Daten aus den HTTP-Headern (`Content-Length`).
+  - Liest die tatsächlichen `POST`-Daten vom Client.
+  - Erzeugt eine JSON-Antwort, die die Nachricht `'POST request received'` sowie die empfangenen Daten enthält.
+  - Ruft `_set_response()` auf, um die Antwort-Header zu setzen.
+  - Sendet die JSON-Antwort an den Client.
+
+### `run(server_class=HTTPServer, handler_class=RESTRequestHandler, port=8000)`
+- **Beschreibung:** Startet den HTTP-Server.
+- **Details:**
+  - `server_address = ('', port)`: Setzt die Serveradresse auf den angegebenen Port (Standard: 8000) und akzeptiert Verbindungen von allen IP-Adressen.
+  - `httpd = server_class(server_address, handler_class)`: Erstellt eine Instanz des HTTP-Servers mit der angegebenen Adresse und Handler-Klasse.
+  - `print(f'Starting httpd on port {port}...')`: Gibt eine Nachricht aus, dass der Server gestartet wird.
+  - `httpd.serve_forever()`: Startet den Server und lässt ihn ununterbrochen laufen.
+
+### `if __name__ == '__main__':`
+- **Beschreibung:** Stellt sicher, dass `run()` nur ausgeführt wird, wenn das Skript direkt ausgeführt wird (nicht importiert).
+- **Details:**
+  - Ruft die `run()`-Funktion auf, um den Server zu starten.
 
 ## Zusammenfassung
 
