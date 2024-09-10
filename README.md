@@ -89,6 +89,3 @@ def neue_funktion(self):
 ### Häufige Probleme
 - **Konfigurationsdatei nicht gefunden**: Stelle sicher, dass die Datei `config/config.json` existiert und korrekt formatiert ist.
 - **Server startet nicht**: Überprüfe die Log-Datei `server.log` für detaillierte Fehlermeldungen.
-
-## Lizenz
-Dieses Projekt ist unter der MIT-Lizenz lizenziert. Weitere Informationen findest du in der Datei `LICENSE`.
