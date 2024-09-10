@@ -7,7 +7,7 @@ import os
 from main import Main
 
 # Configure logging
-logging.basicConfig(level=logging.DEBUG, filename='server.log', filemode='a',
+logging.basicConfig(level=logging.DEBUG, filename='data/server.log', filemode='a',
                     format='%(asctime)s - %(levelname)s - %(message)s')
 
 class Server(BaseHTTPRequestHandler):
